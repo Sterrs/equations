@@ -1,4 +1,9 @@
-\documentclass[a4paper,12pt]{article}
+% This is a LaTeX document, to be compiled something like pdflatex (for which
+% you will need a TeX distribution such as TeXLive)
+
+% vim: ts=1 sw=0 sts=-1 et ai tw=80
+
+\documentclass[a4paper,12pt,fleqn]{article}
 \author{Alastair Horn}
 \title{E Q U A T I O N S}
 
@@ -9,7 +14,7 @@
 % source files by doing `pdfdetach -list <file.pdf>` or
 % `pdfdetach -saveall <file.pdf>`, using pdfdetach from poppler, or some other
 % suitable method.
-\usepackage{embedall}
+\usepackage[main]{embedall}
 \embedfile{mymaths.sty}
 \embedfile{mysty.sty}
 
@@ -30,7 +35,7 @@
  \item (2009/10 British Mathematical Olympiad Round 1) \\
   Find all functions \(f: \R \to \R\), which satisfy the equation
   \(f(x)f(y) = f(x + y) + xy\) for all real numbers \(x\) and \(y\).
- \item (2008/9 British Mathematical Olympiad Round 2)
+ \item (2008/9 British Mathematical Olympiad Round 2) \\
   Find all functions \(f: \R \to \R\), which satisfy the equation
   \[f(x^3) + f(y^3) = (x + y)(f(x^2) + f(y^2) - f(xy))\] for all real numbers
   \(x\) and \(y\).

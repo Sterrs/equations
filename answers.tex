@@ -1,3 +1,8 @@
+% This is a LaTeX document, to be compiled something like pdflatex (for which
+% you will need a TeX distribution such as TeXLive)
+
+% vim: ts=1 sw=0 sts=-1 et ai tw=80
+
 \documentclass[a4paper,12pt,fleqn]{article}
 \author{Alastair Horn}
 \title{A N S W E R S}
@@ -9,7 +14,7 @@
 % source files by doing `pdfdetach -list <file.pdf>` or
 % `pdfdetach -saveall <file.pdf>`, using pdfdetach from poppler, or some other
 % suitable method.
-\usepackage{embedall}
+\usepackage[main]{embedall}
 \embedfile{mymaths.sty}
 \embedfile{mysty.sty}
 
@@ -29,11 +34,11 @@
   }
 
   Multiplying by \(\fdv<y>{x}\), we obtain
-  \begin{alignat*}2
-   && \dv<y>{x} \dv[2]<y>{x} &{}= \dv<y>{x}f(y) \\
+  \begin{alignat}2
+   && \dv<y>{x} \dv[2]<y>{x} &{}= \dv<y>{x}f(y) \nonumber \\
    &\implies{}& \frac 12 \dv{x} \bracks[\Big]{\parens[\Big]{\dv<y>{x}}^2}
-    &{}= \dv{x} [F(y)] \tag{1} \label{eq_1}
-  \end{alignat*}
+    &{}= \dv{x} [F(y)] \label{eq_1}
+  \end{alignat}
   for \(F\) an antiderivative of \(f\) - eg
   \begin{equation*}
    F(t) \defeq \integ[0]<t>{f(\nu)}{\nu}.
@@ -48,7 +53,7 @@
  \item
   % This is an equidimensional equation. The method will work fine for the
   % most general form of the equidimensional equation, but it gets pretty scary
-  % when auxilliary equations have complex roots, and there is some casework
+  % when auxiliary equations have complex roots, and there is some casework
   % so I just picked one that looked as easy as possible
   \adjustbox{valign=t}{
    \begin{tcolorbox}
@@ -59,21 +64,18 @@
    \end{tcolorbox}
   }
 
-  Use substitution \(\displaystyle u = y + x\dv<y>{x}\). This transforms the
-  equation into: \(\displaystyle x\dv<u>{x} - u = 0\) which is separable with solution
-  \(u = 2Ax\) for some constant \(A\). Observe that we also have a first integral
-  for \(y\): \(\displaystyle u = 2Ax = \frac{\mathrm{d}}{\mathrm{d}x}(xy)\),
-  so integrating, we get \(xy = Ax^2 + B\) for some constant \(B\).
-  So we are left with solution \(y = Ax + Bx^{-1}\).
+  Use substitution \(u = y + x\dv<y>{x}\). This transforms the
+  equation into: \(x\dv<u>{x} - u = 0\) which is separable with
+  solution \(u = 2Ax\) for some constant \(A\). Observe that we also have a
+  first integral for \(y\): \(u = 2Ax = \dv{x}(xy)\), so integrating, we get
+  \(xy = Ax^2 + B\) for some constant \(B\). So we are left with the solution
+  \(y = Ax + Bx^{-1}\).
 
  \item
   \adjustbox{valign=t}{
    \begin{tcolorbox}
-    Let \(f: \R \to \R\) be continuous. Supposing that
-    \begin{equation*}
-     \dv[2]<y>{x} = f(y),
-    \end{equation*}
-    find an equation for \(y(x)\) in terms of \(f\).
+    Find all functions \(f: \R \to \R\), which satisfy the equation
+    \(f(x)f(y) = f(x + y) + xy\) for all real numbers \(x\) and \(y\).
    \end{tcolorbox}
   }
 
@@ -119,9 +121,9 @@
   Letting \(y = x\) gives \(2f(x^3) = 2x(2f(x^2) - f(x^2))\), so we have
   \(f(x^3) = xf(x^2)\) for all \(x\). Substituting this expression in for
   \(f(x^3)\) and \(f(y^3)\) in the original equation gives
-  \(xf(x^2) + yf(y^2) = (x + y)(f(x^2) + f(y^2) - f(xy)\) which after expanding
-  and cancelling gives
-  \begin{equation} \label{eq:1}
+  \(xf(x^2) + yf(y^2) = (x + y)(f(x^2) + f(y^2) - f(xy))\), which after
+  expanding and cancelling gives
+  \begin{equation} \label{eq_2}
    yf(x^2) + xf(y^2) = (x + y)f(xy)
   \end{equation}
   for all \(x\) and \(y\).
@@ -129,7 +131,7 @@
   Now let \(y = 1\), in this equation and we have
   \(f(x^2) + xf(1) = (x+1)f(x)\) for all \(x\), which gives us an expression for
   \(f(x^2)\): \(f(x^2) = (x+1)f(x) - xf(1)\). We can substitute these into
-  \ref{eq:1}, giving us:
+  (\ref{eq_2}), giving us:
   \begin{equation*}
    y(x+1)f(x) + x(y+1)f(y) - 2xyf(1) = (x+y)f(xy)
   \end{equation*}
