@@ -1,0 +1,146 @@
+\documentclass[a4paper,12pt,fleqn]{article}
+\author{Alastair Horn}
+\title{A N S W E R S}
+
+\usepackage{mysty}
+\usepackage{mymaths}
+
+% Embed source files into PDF in case of loss. You can view or extract the
+% source files by doing `pdfdetach -list <file.pdf>` or
+% `pdfdetach -saveall <file.pdf>`, using pdfdetach from poppler, or some other
+% suitable method.
+\usepackage{embedall}
+\embedfile{mymaths.sty}
+\embedfile{mysty.sty}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+ \item
+  \adjustbox{valign=t}{
+   \begin{tcolorbox}
+    Let \(f: \R \to \R\) be continuous. Supposing that
+    \begin{equation*}
+     \dv[2]<y>{x} = f(y),
+    \end{equation*}
+    find an equation for \(y(x)\) in terms of \(f\).
+   \end{tcolorbox}
+  }
+
+  Multiplying by \(\fdv<y>{x}\), we obtain
+  \begin{alignat*}2
+   && \dv<y>{x} \dv[2]<y>{x} &{}= \dv<y>{x}f(y) \\
+   &\implies{}& \frac 12 \dv{x} \bracks[\Big]{\parens[\Big]{\dv<y>{x}}^2}
+    &{}= \dv{x} [F(y)] \tag{1} \label{eq_1}
+  \end{alignat*}
+  for \(F\) an antiderivative of \(f\) - eg
+  \begin{equation*}
+   F(t) \defeq \integ[0]<t>{f(\nu)}{\nu}.
+  \end{equation*}
+  Then we can integrate (\ref{eq_1}) to get
+  \begin{alignat*}2
+   && \parens[\Big]{\dv<y>{x}}^2 &{}= 2F(y) + C_1 \\
+   &\implies{}& \dv<y>{x} &{}= \pm \sqrt{2F(y) + C_1} \\
+   &\implies{}& \integ{(2F(y) + C_1)^{-1/2}}{y} &{}= \pm x + C_2.
+  \end{alignat*}
+
+ \item
+  % This is an equidimensional equation. The method will work fine for the
+  % most general form of the equidimensional equation, but it gets pretty scary
+  % when auxilliary equations have complex roots, and there is some casework
+  % so I just picked one that looked as easy as possible
+  \adjustbox{valign=t}{
+   \begin{tcolorbox}
+    Solve the differential equation for \(y\) in terms of \(x\):
+    \begin{equation*}
+      x^2\dv[2]<y>{x} + x\dv<y>{x} - y = 0
+    \end{equation*}
+   \end{tcolorbox}
+  }
+
+  Use substitution \(\displaystyle u = y + x\dv<y>{x}\). This transforms the
+  equation into: \(\displaystyle x\dv<u>{x} - u = 0\) which is separable with solution
+  \(u = 2Ax\) for some constant \(A\). Observe that we also have a first integral
+  for \(y\): \(\displaystyle u = 2Ax = \frac{\mathrm{d}}{\mathrm{d}x}(xy)\),
+  so integrating, we get \(xy = Ax^2 + B\) for some constant \(B\).
+  So we are left with solution \(y = Ax + Bx^{-1}\).
+
+ \item
+  \adjustbox{valign=t}{
+   \begin{tcolorbox}
+    Let \(f: \R \to \R\) be continuous. Supposing that
+    \begin{equation*}
+     \dv[2]<y>{x} = f(y),
+    \end{equation*}
+    find an equation for \(y(x)\) in terms of \(f\).
+   \end{tcolorbox}
+  }
+
+  Letting \(x = y = 0\), we see that \(f(0)^2 = f(0)\). Then either
+  \begin{itemize}
+   \item
+    \(f(0) = 0\). In this case, letting \(y = 0\) shows that
+    \(f(x) = f(x + 0) + x \cdot 0 =  f(x)f(0) = 0\) for all \(x\). So \(f\) is
+    identically zero. However, letting \(x = y = 1\), we see that
+    \(0 \ne 0 + 1\), so this does not provide a solution.
+   \item
+    or, \(f(0) = 1\). In this case, letting \(y = -x\) shows that
+    \(f(x)f(-x) = f(0) - x^2 = 1 - x^2\), for all \(x\).
+
+    Particularly it follows that \(f(1) f(-1) = 0\). So either
+    \begin{itemize}
+     \item
+      \(f(1) = 0\). In this case, letting \(y = 1\), we have
+      \(f(x + 1) + x = f(x) f(1) = 0\) for all \(x\), so
+      \(f(x + 1) = -x\) for all \(x\), ie \(f(x) = 1 - x\) for all \(x\). And
+      indeed, \((1 - x)(1 - y) = (1 - (x + y)) + xy\).
+     \item
+      or, \(f(-1) = 0\). In this case, letting \(y = -1\), we have
+      \(f(x - 1) - x = f(x) f(-1) = 0\) for all \(x\), so
+      \(f(x - 1) = x\) for all \(x\), ie \(f(x) = 1 + x\) for all \(x\). And
+      indeed, \((1 + x)(1 + y) = (1 + (x + y)) + xy\).
+    \end{itemize}
+  \end{itemize}
+  So either \(f(x) = 1 + x\) or \(f(x) = 1 - x\).
+ \item
+  \adjustbox{valign=t}{
+   \begin{tcolorbox}
+     Find all functions \(f: \R \to \R\), which satisfy the equation
+     \[f(x^3) + f(y^3) = (x + y)(f(x^2) + f(y^2) - f(xy))\] for all real numbers
+     \(x\) and \(y\).
+   \end{tcolorbox}
+  }
+
+  Letting \(x = y = 0\) we discover the value of \(f(0)\) has to be \(0\).
+  Letting \(y = -x\) gives \(f(x^3) = -f(-x^3)\), and since \(x^3\) surjective
+  we therefore have \(f\) is odd, so for all \(x\), \(f(-x) = -f(x)\).
+
+  Letting \(y = x\) gives \(2f(x^3) = 2x(2f(x^2) - f(x^2))\), so we have
+  \(f(x^3) = xf(x^2)\) for all \(x\). Substituting this expression in for
+  \(f(x^3)\) and \(f(y^3)\) in the original equation gives
+  \(xf(x^2) + yf(y^2) = (x + y)(f(x^2) + f(y^2) - f(xy)\) which after expanding
+  and cancelling gives
+  \begin{equation} \label{eq:1}
+   yf(x^2) + xf(y^2) = (x + y)f(xy)
+  \end{equation}
+  for all \(x\) and \(y\).
+
+  Now let \(y = 1\), in this equation and we have
+  \(f(x^2) + xf(1) = (x+1)f(x)\) for all \(x\), which gives us an expression for
+  \(f(x^2)\): \(f(x^2) = (x+1)f(x) - xf(1)\). We can substitute these into
+  \ref{eq:1}, giving us:
+  \begin{equation*}
+   y(x+1)f(x) + x(y+1)f(y) - 2xyf(1) = (x+y)f(xy)
+  \end{equation*}
+
+  Now substituting \(y = -x\) and using the fact that \(f\) is odd, we get:
+  \begin{equation*}
+    -2xf(x) + 2x^2f(1) = 0
+  \end{equation*}
+  So we have for \(x \neq 0\), \(f(x) = f(1)x\), and at \(0\) we know \(f\)
+  takes the value \(0\) anyway. And we can check to see that this works for any
+  chosen value of \(f(1)\). So \(f(x) = kx\) for some \(k \in \R\).
+\end{enumerate}
+
+\end{document}
